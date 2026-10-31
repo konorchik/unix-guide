@@ -18,7 +18,7 @@ hero:
 
 features:
   - icon: 📘
-    title: Курс из 19 коротких уроков
+    title: Курс из 20 коротких уроков
     details: "Каждый урок занимает 3–5 минут чтения и столько же практики. Проходить можно в любом порядке — но лучше по программе справа в меню."
   - icon: 🔄
     title: Переезд с Windows без стресса
@@ -50,7 +50,7 @@ features:
 Этот сайт — **человеческий перевод** той инструкции. Здесь нет теории про ядро и пакетные менеджеры «вообще». Есть короткие уроки под реальные ситуации школьного дня: включил компьютер → сделал документ → распечатал → починил, если сломалось.
 
 <div class="home-stats">
-  <div class="stat"><span class="num">19</span><span class="label">уроков и справочников</span></div>
+  <div class="stat"><span class="num">20</span><span class="label">уроков и справочников</span></div>
   <div class="stat"><span class="num">3–5</span><span class="label">минут на один урок</span></div>
   <div class="stat"><span class="num">5</span><span class="label">модулей по темам</span></div>
   <div class="stat"><span class="num">∞</span><span class="label">бесплатно и без регистрации</span></div>
@@ -266,6 +266,13 @@ features:
   <h3>Планы уроков 40/90 минут</h3>
   <p>Готовые тайминги, цели и действия учителя — подставьте свой предмет и проводите.</p>
   <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:35%"></i></span></span>
+</a>
+
+<a class="course-card" href="/unix-guide/lessons/sources.html">
+  <div class="cc-head"><span class="cc-icon">🏛️</span><span class="cc-mod">первоисточники</span></div>
+  <h3>Официальные источники Astra Linux</h3>
+  <p>Вики, портал документации, сертификаты ФСТЭК и реестр Минцифры — где проверять любую информацию о системе.</p>
+  <span class="cc-meta">4 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
 </a>
 
 </div>
