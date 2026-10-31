@@ -104,7 +104,8 @@ export default defineConfig({
           { text: 'Словарь терминов', link: '/lessons/glossary' },
           { text: 'Чек-листы для печати', link: '/lessons/checklists' },
           { text: 'Планы уроков 40/90 минут', link: '/lessons/lesson-plan' },
-          { text: '🏛️ Официальные источники Astra Linux', link: '/lessons/sources' }
+          { text: "🏛️ Официальные источники Astra Linux", link: "/lessons/sources" },
+          { text: "🧰 Справочник команд терминала", link: "/lessons/commands" }
         ]
       }
     ],
