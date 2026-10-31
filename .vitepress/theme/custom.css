@@ -1,0 +1,444 @@
+/* ==========================================================================
+   Astra Linux для учителя — дизайн-система сайта
+   Светлая тема: мягкая «бумажная» база + фирменный синий Astra
+   Тёмная тема: глубокий сине-графитовый фон, тот же бренд
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. БАЗОВЫЕ ТОКЕНЫ (светлая тема по умолчанию)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Фирменная палитра Astra — спокойный, читаемый синий */
+  --vp-c-brand-1: #0b5cad;
+  --vp-c-brand-2: #0a4f96;
+  --vp-c-brand-3: #eaf2fb;
+  --vp-c-brand-soft: rgba(11, 92, 173, 0.14);
+
+  /* Фон: слегка «тёплый белый», чтобы глаза меньше уставали */
+  --vp-c-bg: #fdfdfe;
+  --vp-c-bg-alt: #f1f5fa;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f6f9fc;
+
+  /* Текст: почти чёрный с синим подтоном */
+  --vp-c-text-1: #17222e;
+  --vp-c-text-2: #4b5c70;
+  --vp-c-text-3: #7a8ba0;
+
+  /* Границы и разделители */
+  --vp-c-border: #dbe3ec;
+  --vp-c-gutter: #e8eef5;
+
+  /* Индикаторы */
+  --vp-c-success-3: #2e7d32;
+  --vp-c-warning-3: #b26a00;
+  --vp-c-danger-3: #c62828;
+
+  /* Собственные переменные дизайна */
+  --ag-radius: 14px;
+  --ag-shadow-sm: 0 1px 2px rgba(23, 34, 46, 0.06), 0 2px 8px rgba(23, 34, 46, 0.05);
+  --ag-shadow-md: 0 4px 12px rgba(23, 34, 46, 0.08), 0 12px 32px rgba(23, 34, 46, 0.08);
+  --ag-hero-from: #eaf2fb;
+  --ag-hero-to: #fdfdfe;
+  --ag-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   2. ТЁМНАЯ ТЕМА (согласованная с брендом, а не «фиолетовый неон»)
+   -------------------------------------------------------------------------- */
+.dark {
+  --vp-c-brand-1: #7ab8ff;
+  --vp-c-brand-2: #5aa5f2;
+  --vp-c-brand-3: #1b3a5c;
+  --vp-c-brand-soft: rgba(122, 184, 255, 0.16);
+
+  --vp-c-bg: #10161f;
+  --vp-c-bg-alt: #151d29;
+  --vp-c-bg-elv: #18212e;
+  --vp-c-bg-soft: #131b26;
+
+  --vp-c-text-1: #e8eef6;
+  --vp-c-text-2: #a7b5c6;
+  --vp-c-text-3: #76869a;
+
+  --vp-c-border: #263243;
+  --vp-c-gutter: #1c2532;
+
+  --ag-hero-from: #12203a;
+  --ag-hero-to: #10161f;
+  --ag-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+  --ag-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45), 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   3. ТИПОГРАФИКА И ОБЩИЕ ЭЛЕМЕНТЫ
+   -------------------------------------------------------------------------- */
+:root {
+  --vp-font-family-base: var(--ag-font);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #0b5cad 30%, #2f9de4);
+}
+
+.dark {
+  --vp-home-hero-name-background: linear-gradient(120deg, #7ab8ff 30%, #2f9de4);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--vp-c-brand-soft);
+}
+
+/* Видимая рамка фокуса для навигации с клавиатуры — важно для доступности */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Плавная смена темы при переключателе */
+html.theme-transition,
+html.theme-transition body,
+html.theme-transition .VPNav,
+html.theme-transition .VPSidebar,
+html.theme-transition .VPContent,
+html.theme-transition .VPLocalNav,
+html.theme-transition .VPFooter {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.25s ease !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. НАВИГАЦИЯ И САЙДБАР
+   -------------------------------------------------------------------------- */
+.VPNavBar.has-sidebar .content,
+.VPNavBar.has-sidebar .content-wrapper {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Активный пункт бокового меню — мягкая «пилюля» */
+.VPSidebar .link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+.VPSidebarItem .items .VPSidebarItem {
+  padding-left: 6px;
+}
+
+/* Прогресс чтения вверху страницы */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 100;
+  background: linear-gradient(90deg, #0b5cad, #2f9de4);
+  transition: width 0.1s linear;
+}
+
+/* --------------------------------------------------------------------------
+   5. СОДЕРЖИМОЕ ДОКУМЕНТОВ (уроки)
+   -------------------------------------------------------------------------- */
+.vp-doc {
+  line-height: 1.75;
+}
+
+.vp-doc h1 {
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h2 {
+  border-top: none;
+  margin-top: 44px;
+  padding-top: 0;
+  letter-spacing: -0.015em;
+  position: relative;
+}
+
+.vp-doc h2::before {
+  content: '';
+  display: block;
+  width: 42px;
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), #2f9de4);
+}
+
+.vp-doc a {
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--vp-c-border);
+  border-radius: var(--ag-radius);
+  overflow: hidden;
+  box-shadow: var(--ag-shadow-sm);
+}
+
+.vp-doc tbody tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+/* Контейнеры tip/warning/danger — аккуратные карточки */
+.vp-doc .custom-block {
+  border-radius: var(--ag-radius);
+  box-shadow: var(--ag-shadow-sm);
+  border-width: 1px;
+  border-left-width: 4px;
+}
+
+.vp-doc blockquote {
+  margin: 20px 0;
+  padding: 14px 20px;
+  border-left: 4px solid var(--vp-c-brand-1);
+  border-radius: 0 var(--ag-radius) var(--ag-radius) 0;
+  background-color: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+}
+
+/* Красивое оформление скриншотов в уроках */
+.vp-doc img {
+  border-radius: 10px;
+  box-shadow: var(--ag-shadow-md);
+  margin: 24px auto;
+  display: block;
+  border: 1px solid var(--vp-c-border);
+}
+
+/* --------------------------------------------------------------------------
+   6. ГЛАВНАЯ СТРАНИЦА
+   -------------------------------------------------------------------------- */
+.VPHome {
+  position: relative;
+}
+
+.VPHome::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 560px;
+  background:
+    radial-gradient(60% 55% at 20% 0%, var(--ag-hero-from) 0%, transparent 70%),
+    radial-gradient(50% 50% at 85% 10%, rgba(47, 157, 228, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.VPHome .VPHero,
+.VPHome .VPFeatures,
+.VPHome .content {
+  position: relative;
+  z-index: 1;
+}
+
+.VPFeature {
+  border-radius: var(--ag-radius) !important;
+  border: 1px solid var(--vp-c-border) !important;
+  background: var(--vp-c-bg-elv) !important;
+  box-shadow: var(--ag-shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ag-shadow-md);
+  border-color: var(--vp-c-brand-1) !important;
+}
+
+.VPFeature .title {
+  letter-spacing: -0.01em;
+}
+
+/* Кнопки hero */
+.VPHero .actions a {
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.VPHero .actions a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ag-shadow-md);
+}
+
+/* Секции на главной после hero */
+.VPHome .vp-doc {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 24px 64px;
+}
+
+.VPHome .vp-doc h2 {
+  border-top: 1px solid var(--vp-c-border);
+  margin-top: 56px;
+  padding-top: 28px;
+  letter-spacing: -0.02em;
+  font-size: 28px;
+}
+
+.VPHome .vp-doc h3 {
+  margin-top: 36px;
+}
+
+/* Список «Программа курса» превращаем в карточки-ссылки */
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.course-list li {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.course-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 12px;
+  background: var(--vp-c-bg-elv);
+  box-shadow: var(--ag-shadow-sm);
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+  font-weight: 500;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-list a:hover {
+  transform: translateX(4px);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: var(--ag-shadow-md);
+  color: var(--vp-c-brand-1);
+}
+
+.course-list a::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--vp-c-text-3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.course-list a:hover::after {
+  transform: translateX(3px);
+  color: var(--vp-c-brand-1);
+}
+
+/* --------------------------------------------------------------------------
+   7. ПОИСК (local search)
+   -------------------------------------------------------------------------- */
+.VPLocalSearchBox .results {
+  border-radius: var(--ag-radius);
+}
+
+/* --------------------------------------------------------------------------
+   8. ФУТЕР
+   -------------------------------------------------------------------------- */
+.VPFooter {
+  border-top: 1px solid var(--vp-c-border);
+}
+
+/* --------------------------------------------------------------------------
+   9. АДАПТИВНОСТЬ
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .VPHero .text {
+    font-size: 30px !important;
+  }
+
+  .VPHero .tagline {
+    font-size: 15px;
+  }
+
+  .course-list a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Уменьшаем анимации для тех, кто их отключил в системе */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. СТИЛИ ДЛЯ ПЕЧАТИ (Ctrl + P) — шпаргалки из уроков
+   -------------------------------------------------------------------------- */
+@media print {
+  .VPNav, .VPSidebar, .VPLastUpdated, .edit-link, .VPDocFooter,
+  .VPLocalNav, .read-progress, .VPFooter, .page-edit, .VPBackToTop {
+    display: none !important;
+  }
+
+  .VPContent, .vp-doc {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  :root {
+    --vp-c-text-1: #000000 !important;
+    --vp-c-bg: #ffffff !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: #000 !important;
+  }
+
+  .vp-doc img {
+    box-shadow: none;
+  }
+
+  .vp-doc table {
+    box-shadow: none;
+  }
+}

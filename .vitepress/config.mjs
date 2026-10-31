@@ -9,20 +9,45 @@ export default defineConfig({
   // Если позже подключите собственный домен — установите base: '/' и CNAME.
   base: '/unix-guide/',
 
-  // Astra Linux не имеет официального цвета бренда в VitePress — задаём свой
-  // (тёмно-бордовый, перекликающийся с логотипом «Ред Остра»/Astra)
+  // Тема включена; выбор посетителя (светлая/тёмная) запоминается
   appearance: true,
-  
+  appearanceText: 'Тема',
+
+  // Иконка сайта и мета-теги для соцсетей/поисковиков
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/unix-guide/favicon.svg' }],
+    ['meta', { name: 'theme-color', content: '#0b5cad', media: '(prefers-color-scheme: light)' }],
+    ['meta', { name: 'theme-color', content: '#10161f', media: '(prefers-color-scheme: dark)' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Astra Linux для учителя' }],
+    ['meta', { property: 'og:description', content: 'Практический курс и справочник по работе с Astra Linux: без сложной терминологии, только то, что нужно на уроках.' }]
+  ],
+
   // Настройки темы
   themeConfig: {
     // Логотип и заголовок в левом верхнем углу
+    logo: '/favicon.svg',
     siteTitle: 'Astra Linux для учителя',
-    
+
     // Верхнее навигационное меню
     nav: [
       { text: 'Главная', link: '/' },
-      { text: 'Курс', link: '/lessons/intro' }
+      { text: 'Начать курс', link: '/lessons/intro' },
+      { text: 'Шпаргалки', link: '/lessons/shortcuts' },
+      { text: 'FAQ', link: '/lessons/faq' }
     ],
+
+    // Оглавление справа на страницах уроков
+    outline: {
+      level: [2, 3],
+      label: 'На этой странице'
+    },
+
+    // Отметка «обновлено» внизу страниц
+    lastUpdated: {
+      text: 'Обновлено',
+      formatOptions: { dateStyle: 'long', timeStyle: 'short' }
+    },
 
     // Боковое меню со всеми уроками и модулями
     sidebar: [
@@ -71,11 +96,14 @@ export default defineConfig({
         ]
       },
       {
-        text: '📄 Шпаргалки и FAQ',
+        text: '📄 Шпаргалки, FAQ и словари',
         collapsed: false,
         items: [
           { text: 'Шпаргалки и горячие клавиши', link: '/lessons/shortcuts' },
-          { text: 'Частые вопросы (FAQ)', link: '/lessons/faq' }
+          { text: 'Частые вопросы (FAQ)', link: '/lessons/faq' },
+          { text: 'Словарь терминов', link: '/lessons/glossary' },
+          { text: 'Чек-листы для печати', link: '/lessons/checklists' },
+          { text: 'Планы уроков 40/90 минут', link: '/lessons/lesson-plan' }
         ]
       }
     ],
@@ -108,8 +136,27 @@ export default defineConfig({
 
     // Текст внизу страниц (футер)
     footer: {
-      message: 'Создано для учителей и образовательных организаций',
-      copyright: 'Практическое руководство по Astra Linux'
+      message: 'Создано для учителей и образовательных организаций 🧡',
+      copyright: 'Практическое руководство по Astra Linux — 2026'
+    },
+
+    // Ссылка на репозиторий в навигации
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/konorchik/unix-guide' }
+    ],
+
+    // Возможность предложить правку урока прямо на GitHub
+    editLink: {
+      pattern: 'https://github.com/konorchik/unix-guide/edit/main/:path',
+      text: '✏️ Предложить правку этого урока'
+    },
+
+    // 404-страница по-русски
+    notFound: {
+      title: 'Страница не найдена',
+      quote: 'Похоже, такой урок ещё не написан — или ссылка устарела.',
+      linkText: 'Вернуться на главную',
+      linkLabel: 'На главную'
     },
 
     // Настройка текста кнопок пагинации (предыдущий/следующий урок)
