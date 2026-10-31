@@ -4,6 +4,14 @@ export default defineConfig({
   title: 'Astra Linux для учителя',
   description: 'Практический курс и справочник по работе с операционной системой',
   lang: 'ru-RU',
+
+  // База для GitHub Pages (проектный сайт konorchik.github.io/unix-guide/).
+  // Если позже подключите собственный домен — установите base: '/' и CNAME.
+  base: '/unix-guide/',
+
+  // Astra Linux не имеет официального цвета бренда в VitePress — задаём свой
+  // (тёмно-бордовый, перекликающийся с логотипом «Ред Остра»/Astra)
+  appearance: true,
   
   // Настройки темы
   themeConfig: {

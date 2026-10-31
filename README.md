@@ -38,3 +38,17 @@ lessons/           # уроки курса
 1. Создайте файл `lessons/<имя>.md` с frontmatter (`title`, `description`).
 2. Добавьте ссылку на него в `sidebar` (и при необходимости в `nav`) файла `.vitepress/config.mjs`.
 3. Проверьте сборку командой `npm run build` — VitePress сам сообщит о «битых» ссылках.
+
+## 🌐 Публикация на GitHub Pages
+
+Сайт автоматически публикуется через GitHub Actions: файл `.github/workflows/deploy.yml` собирает VitePress и деплоит результат в Pages при каждом пуше в `main`.
+
+**Одноразовая настройка (через веб-интерфейс GitHub):**
+1. Откройте **Settings → Pages** репозитория.
+2. В разделе **Build and deployment** выберите **Source: GitHub Actions**.
+3. Сделайте любой пуш в `main` (или запустите workflow вручную: Actions → Deploy VitePress site to GitHub Pages → Run workflow).
+
+После завершения сборки сайт будет доступен по адресу:
+**https://konorchik.github.io/unix-guide/**
+
+> Важно: в `.vitepress/config.mjs` уже настроен `base: '/unix-guide/'`. Если смените имя репозитория или подключите свой домен — обновите `base` (для собственного домена: `base: '/'` + файл `CNAME`).
