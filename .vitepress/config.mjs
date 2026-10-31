@@ -19,6 +19,13 @@ export default defineConfig({
     // Боковое меню со всеми уроками и модулями
     sidebar: [
       {
+        text: '🔧 Модуль 0. Подготовка техники',
+        collapsed: true,
+        items: [
+          { text: 'Модуль 1. Развертывание и установка', link: '/lessons/01-installation' }
+        ]
+      },
+      {
         text: '📘 Модуль 1. Основы работы',
         collapsed: false,
         items: [
@@ -45,6 +52,13 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '4.1. Безопасность и сбои программ', link: '/lessons/security' }
+        ]
+      },
+      {
+        text: '📄 Шпаргалки',
+        collapsed: false,
+        items: [
+          { text: 'Шпаргалки и горячие клавиши', link: '/lessons/shortcuts' }
         ]
       }
     ],
