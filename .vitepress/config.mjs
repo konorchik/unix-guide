@@ -17,7 +17,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/unix-guide/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#0b5cad', media: '(prefers-color-scheme: light)' }],
-    ['meta', { name: 'theme-color', content: '#10161f', media: '(prefers-color-scheme: dark)' }],
+    ['meta', { name: 'theme-color', content: '#171226', media: '(prefers-color-scheme: dark)' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'Astra Linux для учителя' }],
     ['meta', { property: 'og:description', content: 'Практический курс и справочник по работе с Astra Linux: без сложной терминологии, только то, что нужно на уроках.' }]

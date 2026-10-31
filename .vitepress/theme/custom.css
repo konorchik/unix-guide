@@ -1,7 +1,11 @@
 /* ==========================================================================
    Astra Linux для учителя — дизайн-система сайта
    Светлая тема: мягкая «бумажная» база + фирменный синий Astra
-   Тёмная тема: глубокий сине-графитовый фон, тот же бренд
+   Тёмная тема: фиолетовая («Astra violet») — по просьбе пользователей курса
+
+   ВАЖНО (производительность): в этой теме сознательно НЕТ
+   backdrop-filter/blur, тяжёлых многослойных теней и анимаций на скролле.
+   Сайт смотрят с обычных школьных ПК, где такие эффекты «вешали» интерфейс.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -45,30 +49,32 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. ТЁМНАЯ ТЕМА (согласованная с брендом, а не «фиолетовый неон»)
+   2. ТЁМНАЯ ТЕМА — фиолетовая («Astra violet»)
+   Глубокий фиолетовый фон + лавандовые акценты; контраст подобран так,
+   чтобы текст оставался читаемым при ярком свете проектора в кабинете.
    -------------------------------------------------------------------------- */
 .dark {
-  --vp-c-brand-1: #7ab8ff;
-  --vp-c-brand-2: #5aa5f2;
-  --vp-c-brand-3: #1b3a5c;
-  --vp-c-brand-soft: rgba(122, 184, 255, 0.16);
+  --vp-c-brand-1: #c9a6ff;
+  --vp-c-brand-2: #b78aff;
+  --vp-c-brand-3: #45306e;
+  --vp-c-brand-soft: rgba(201, 166, 255, 0.18);
 
-  --vp-c-bg: #10161f;
-  --vp-c-bg-alt: #151d29;
-  --vp-c-bg-elv: #18212e;
-  --vp-c-bg-soft: #131b26;
+  --vp-c-bg: #171226;
+  --vp-c-bg-alt: #1f1832;
+  --vp-c-bg-elv: #241c3a;
+  --vp-c-bg-soft: #1d1730;
 
-  --vp-c-text-1: #e8eef6;
-  --vp-c-text-2: #a7b5c6;
-  --vp-c-text-3: #76869a;
+  --vp-c-text-1: #f1ecfa;
+  --vp-c-text-2: #bdb0d4;
+  --vp-c-text-3: #8d7fa8;
 
-  --vp-c-border: #263243;
-  --vp-c-gutter: #1c2532;
+  --vp-c-border: #372c52;
+  --vp-c-gutter: #2b2241;
 
-  --ag-hero-from: #12203a;
-  --ag-hero-to: #10161f;
-  --ag-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
-  --ag-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45), 0 16px 40px rgba(0, 0, 0, 0.4);
+  --ag-hero-from: #2a1f47;
+  --ag-hero-to: #171226;
+  --ag-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.25);
+  --ag-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -81,7 +87,7 @@
 }
 
 .dark {
-  --vp-home-hero-name-background: linear-gradient(120deg, #7ab8ff 30%, #2f9de4);
+  --vp-home-hero-name-background: linear-gradient(120deg, #c9a6ff 30%, #8f5cf7);
 }
 
 html {
@@ -106,25 +112,14 @@ input:focus-visible {
   border-radius: 4px;
 }
 
-/* Плавная смена темы при переключателе */
-html.theme-transition,
-html.theme-transition body,
-html.theme-transition .VPNav,
-html.theme-transition .VPSidebar,
-html.theme-transition .VPContent,
-html.theme-transition .VPLocalNav,
-html.theme-transition .VPFooter {
-  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.25s ease !important;
-}
+/* Переключение темы мгновенное (без transition-волны по всему DOM):
+   именно постоянные анимации смен класса «вешали» интерфейс на слабых ПК */
 
 /* --------------------------------------------------------------------------
    4. НАВИГАЦИЯ И САЙДБАР
    -------------------------------------------------------------------------- */
-.VPNavBar.has-sidebar .content,
-.VPNavBar.has-sidebar .content-wrapper {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
+/* Без backdrop-filter/blur — на слабых видеокартах в школьных кабинетах
+   размытие навбара вызывало заметные подтормаживания при скролле */
 
 .VPNavBarTitle .title {
   font-weight: 700;
@@ -149,8 +144,8 @@ html.theme-transition .VPFooter {
   height: 3px;
   width: 0;
   z-index: 100;
-  background: linear-gradient(90deg, #0b5cad, #2f9de4);
-  transition: width 0.1s linear;
+  /* простой сплошной цвет вместо градиента — дешевле для отрисовки */
+  background: var(--vp-c-brand-1);
 }
 
 /* --------------------------------------------------------------------------
@@ -216,6 +211,15 @@ html.theme-transition .VPFooter {
   border-left-width: 4px;
 }
 
+/* Блок «info» (синий) согласуем с фирменным цветом в обеих темах */
+.vp-doc .custom-block.info {
+  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+.vp-doc .custom-block.info .custom-block-title {
+  color: var(--vp-c-text-1);
+}
+
 .vp-doc blockquote {
   margin: 20px 0;
   padding: 14px 20px;
@@ -241,14 +245,13 @@ html.theme-transition .VPFooter {
   position: relative;
 }
 
+/* Одна мягкая радиальная подсветка hero (вместо двух слоёв и тяжёлых градиентов) */
 .VPHome::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: 560px;
-  background:
-    radial-gradient(60% 55% at 20% 0%, var(--ag-hero-from) 0%, transparent 70%),
-    radial-gradient(50% 50% at 85% 10%, rgba(47, 157, 228, 0.12) 0%, transparent 70%);
+  height: 480px;
+  background: radial-gradient(70% 60% at 50% 0%, var(--ag-hero-from) 0%, transparent 75%);
   pointer-events: none;
   z-index: 0;
 }
@@ -265,12 +268,9 @@ html.theme-transition .VPFooter {
   border: 1px solid var(--vp-c-border) !important;
   background: var(--vp-c-bg-elv) !important;
   box-shadow: var(--ag-shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .VPFeature:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--ag-shadow-md);
   border-color: var(--vp-c-brand-1) !important;
 }
 
@@ -282,12 +282,6 @@ html.theme-transition .VPFooter {
 .VPHero .actions a {
   border-radius: 999px;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.VPHero .actions a:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--ag-shadow-md);
 }
 
 /* Секции на главной после hero */
@@ -307,6 +301,37 @@ html.theme-transition .VPFooter {
 
 .VPHome .vp-doc h3 {
   margin-top: 36px;
+}
+
+/* Инфографика «как устроен курс» — карточки без JS-анимаций */
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 28px 0 8px;
+}
+
+.home-stats .stat {
+  border: 1px solid var(--vp-c-border);
+  border-radius: var(--ag-radius);
+  background: var(--vp-c-bg-elv);
+  padding: 16px 18px;
+  text-align: center;
+}
+
+.home-stats .num {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  line-height: 1.2;
+}
+
+.home-stats .label {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
 }
 
 /* Список «Программа курса» превращаем в карточки-ссылки */
@@ -336,13 +361,10 @@ html.theme-transition .VPFooter {
   text-decoration: none;
   color: var(--vp-c-text-1);
   font-weight: 500;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .course-list a:hover {
-  transform: translateX(4px);
   border-color: var(--vp-c-brand-1);
-  box-shadow: var(--ag-shadow-md);
   color: var(--vp-c-brand-1);
 }
 
@@ -350,11 +372,9 @@ html.theme-transition .VPFooter {
   content: '→';
   margin-left: auto;
   color: var(--vp-c-text-3);
-  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .course-list a:hover::after {
-  transform: translateX(3px);
   color: var(--vp-c-brand-1);
 }
 
