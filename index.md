@@ -95,7 +95,7 @@ features:
 
 <div class="course-cards">
 
-<a class="course-card" href="/lessons/01-installation">
+<a class="course-card" href="/unix-guide/lessons/01-installation.html">
   <div class="cc-head"><span class="cc-icon">💿</span><span class="cc-mod">урок 0.1</span></div>
   <h3>Развёртывание и установка Astra Linux</h3>
   <p>Как поставить систему на компьютеры кабинета: с флешки, по сети и что делать после установки.</p>
@@ -110,35 +110,35 @@ features:
 
 <div class="course-cards">
 
-<a class="course-card" href="/lessons/windows-switch">
+<a class="course-card" href="/unix-guide/lessons/windows-switch.html">
   <div class="cc-head"><span class="cc-icon">🔄</span><span class="cc-mod">урок 1.0</span></div>
   <h3>Переезд с Windows</h3>
   <p>Где кнопка «Пуск», чем Fly похожа на Windows и что изменилось на самом деле.</p>
   <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/intro">
+<a class="course-card" href="/unix-guide/lessons/intro.html">
   <div class="cc-head"><span class="cc-icon">🖥️</span><span class="cc-mod">урок 1.1</span></div>
   <h3>Интерфейс Fly и рабочий стол</h3>
   <p>Меню, панель задач, окна и ярлыки — ориентируемся на новом рабочем месте.</p>
   <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/files">
+<a class="course-card" href="/unix-guide/lessons/files.html">
   <div class="cc-head"><span class="cc-icon">📁</span><span class="cc-mod">урок 1.2</span></div>
   <h3>Файлы, папки и флешки</h3>
   <p>Где лежат документы, как правильно вставлять и извлекать USB-накопители.</p>
   <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/accounts">
+<a class="course-card" href="/unix-guide/lessons/accounts.html">
   <div class="cc-head"><span class="cc-icon">👤</span><span class="cc-mod">урок 1.3</span></div>
   <h3>Учётные записи и вход в систему</h3>
   <p>Свой пароль, детский профиль и что делать, если вход не получается.</p>
   <span class="cc-meta">4 мин<span class="cc-bar"><i style="width:25%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/internet">
+<a class="course-card" href="/unix-guide/lessons/internet.html">
   <div class="cc-head"><span class="cc-icon">🌐</span><span class="cc-mod">урок 1.4</span></div>
   <h3>Интернет и браузер</h3>
   <p>Wi-Fi, закладки, обновления браузера и школьные сайты без сюрпризов.</p>
@@ -153,21 +153,21 @@ features:
 
 <div class="course-cards">
 
-<a class="course-card" href="/lessons/office">
+<a class="course-card" href="/unix-guide/lessons/office.html">
   <div class="cc-head"><span class="cc-icon">📝</span><span class="cc-mod">урок 2.1</span></div>
   <h3>Writer: замена Word</h3>
   <p>Документы, шрифты, сохранение в .docx и печать раздаточных материалов.</p>
   <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/calc">
+<a class="course-card" href="/unix-guide/lessons/calc.html">
   <div class="cc-head"><span class="cc-icon">📊</span><span class="cc-mod">урок 2.2</span></div>
   <h3>Calc: таблицы и диаграммы</h3>
   <p>Журнал с оценками, средний балл, формулы и диаграмма успеваемости класса.</p>
   <span class="cc-meta">7 мин<span class="cc-bar"><i style="width:50%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/impress">
+<a class="course-card" href="/unix-guide/lessons/impress.html">
   <div class="cc-head"><span class="cc-icon">🎞️</span><span class="cc-mod">урок 2.3</span></div>
   <h3>Impress: презентации классу</h3>
   <p>Слайды показу, заметки докладчика и экспорт в .pptx для чужих ПК.</p>
@@ -182,14 +182,14 @@ features:
 
 <div class="course-cards">
 
-<a class="course-card" href="/lessons/peripherals">
+<a class="course-card" href="/unix-guide/lessons/peripherals.html">
   <div class="cc-head"><span class="cc-icon">🖨️</span><span class="cc-mod">урок 3.1</span></div>
   <h3>Принтеры, проектор и звук</h3>
   <p>Пошаговое подключение и разбор типичных казусов: молчит принтер, нет картинки.</p>
   <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/media">
+<a class="course-card" href="/unix-guide/lessons/media.html">
   <div class="cc-head"><span class="cc-icon">🎤</span><span class="cc-mod">урок 3.2</span></div>
   <h3>Сканирование, камера и микрофон</h3>
   <p>Сканер для раздатки, webcam для дистанционного урока и запись звука.</p>
@@ -204,21 +204,21 @@ features:
 
 <div class="course-cards">
 
-<a class="course-card" href="/lessons/security">
+<a class="course-card" href="/unix-guide/lessons/security.html">
   <div class="cc-head"><span class="cc-icon">🛡️</span><span class="cc-mod">урок 4.1</span></div>
   <h3>Безопасность и сбои программ</h3>
   <p>Пароли, фишинг, зависшие окна и аккуратная перезагрузка без потери файлов.</p>
   <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/terminal">
+<a class="course-card" href="/unix-guide/lessons/terminal.html">
   <div class="cc-head"><span class="cc-icon">⌨️</span><span class="cc-mod">урок 4.2</span></div>
   <h3>Терминал и установка программ</h3>
   <p>Несколько команд первой необходимости и магазин приложений вместо .exe.</p>
   <span class="cc-meta">7 мин<span class="cc-bar"><i style="width:50%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/backup">
+<a class="course-card" href="/unix-guide/lessons/backup.html">
   <div class="cc-head"><span class="cc-icon">💾</span><span class="cc-mod">урок 4.3</span></div>
   <h3>Резервные копии и восстановление</h3>
   <p>Копия журнала на флешку, возврат удалённого файла и план на случай поломки ПК.</p>
@@ -233,35 +233,35 @@ features:
 
 <div class="course-cards">
 
-<a class="course-card" href="/lessons/shortcuts">
+<a class="course-card" href="/unix-guide/lessons/shortcuts.html">
   <div class="cc-head"><span class="cc-icon">⌨️</span><span class="cc-mod">шпаргалка</span></div>
   <h3>Горячие клавиши и памятки</h3>
   <p>Клавиши учителя, чек-лист флешки и экстренная таблица «что делать сейчас».</p>
   <span class="cc-meta">3 мин · Ctrl+P<span class="cc-bar"><i style="width:20%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/faq">
+<a class="course-card" href="/unix-guide/lessons/faq.html">
   <div class="cc-head"><span class="cc-icon">❓</span><span class="cc-mod">справочник</span></div>
   <h3>Частые вопросы (FAQ)</h3>
   <p>Реальные вопросы коллег: флешки, электронные журналы, ЭЦП и «куда делись файлы».</p>
   <span class="cc-meta">4 мин<span class="cc-bar"><i style="width:25%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/glossary">
+<a class="course-card" href="/unix-guide/lessons/glossary.html">
   <div class="cc-head"><span class="cc-icon">📖</span><span class="cc-mod">словарь</span></div>
   <h3>Словарь терминов</h3>
   <p>Перевод с «компьютерного» на человеческий: около сорока понятий простыми словами.</p>
   <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:35%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/checklists">
+<a class="course-card" href="/unix-guide/lessons/checklists.html">
   <div class="cc-head"><span class="cc-icon">✅</span><span class="cc-mod">для печати</span></div>
   <h3>Чек-листы кабинета</h3>
   <p>Утренний осмотр, начало и конец урока, аварийная таблица и генуборка ПК.</p>
   <span class="cc-meta">3 мин · Ctrl+P<span class="cc-bar"><i style="width:20%"></i></span></span>
 </a>
 
-<a class="course-card" href="/lessons/lesson-plan">
+<a class="course-card" href="/unix-guide/lessons/lesson-plan.html">
   <div class="cc-head"><span class="cc-icon">🕐</span><span class="cc-mod">сценарии</span></div>
   <h3>Планы уроков 40/90 минут</h3>
   <p>Готовые тайминги, цели и действия учителя — подставьте свой предмет и проводите.</p>
