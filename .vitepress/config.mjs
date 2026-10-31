@@ -55,7 +55,7 @@ export default defineConfig({
         text: '🔧 Модуль 0. Подготовка техники',
         collapsed: true,
         items: [
-          { text: 'Модуль 1. Развертывание и установка', link: '/lessons/01-installation' }
+          { text: '0.1. Развертывание и установка', link: '/lessons/01-installation' }
         ]
       },
       {
