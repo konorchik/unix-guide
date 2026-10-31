@@ -156,6 +156,12 @@ html {
   background-color: var(--vp-c-brand-1);
 }
 
+/* «Пальце-friendly»: на тач-устройствах скроллбар крупнее, чтобы попадать */
+@media (pointer: coarse) {
+  ::-webkit-scrollbar { width: 16px; height: 16px; }
+  ::-webkit-scrollbar-thumb { border-width: 4px; }
+}
+
 /* Боковое меню и содержимое тоже получают аккуратный тонкий скролл */
 .VPSidebar::-webkit-scrollbar,
 .VPMenu::-webkit-scrollbar {
@@ -218,6 +224,35 @@ html {
 }
 .read-progress.done::after {
   background: #66bb6a;
+  box-shadow: 0 0 10px rgba(102, 187, 106, 0.55);
+}
+
+/* Подсказка над полосой при доходе до конца урока («урок пройден») */
+.read-progress .rp-tip {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(90deg, var(--vp-c-success-3), #66bb6a);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.read-progress .rp-tip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .read-progress,
+  .read-progress .rp-tip { transition: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -498,8 +533,21 @@ a:active {
   font-size: 28px;
 }
 
-.VPHome .vp-doc h3 {
-  margin-top: 36px;
+.VPHome .vp-doc > h3 {
+  margin-top: 40px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  letter-spacing: -0.01em;
+}
+
+/* Человечный текст на главной: чуть крупнее и «дышащий» интерлиньяж */
+.VPHome .vp-doc > p {
+  font-size: 15.5px;
+  line-height: 1.8;
 }
 
 /* Инфографика «как устроен курс» — карточки без JS-анимаций */
@@ -632,6 +680,34 @@ a.course-card:active {
   font-size: 14px;
   line-height: 1.55;
   color: var(--vp-c-text-2);
+}
+
+/* Подпись времени + мини-полоска «сколько читать» (данные width в разметке) */
+.course-card .cc-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-card .cc-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-border);
+  overflow: hidden;
+}
+
+.course-card .cc-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--ag-accent-2));
+  transition: filter 0.15s ease;
+}
+
+.course-card:hover .cc-bar i {
+  filter: brightness(1.15) saturate(1.1);
 }
 
 .course-card .cc-list {

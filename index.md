@@ -87,97 +87,192 @@ features:
 
 ## 🗺️ Программа курса
 
+Курс состоит из пяти модулей — идите по порядку, но можно и с любого места. Каждый пункт ниже ведёт прямо в урок; полоски справа показывают, сколько примерно займёт чтение.
+
+### 🔧 Модуль 0 · Подготовка техники
+
+Для завучей и системных администраторов — обычным учителям можно пропустить.
+
 <div class="course-cards">
 
 <a class="course-card" href="/lessons/01-installation">
-  <div class="cc-head"><span class="cc-icon">🔧</span><span class="cc-mod">Модуль 0 · для администраторов</span></div>
-  <h3>Подготовка техники</h3>
-  <p>С чего начинается школьная Astra Linux: развёртывание системы на компьютеры кабинета.</p>
-  <ul class="cc-list">
-    <li>Развёртывание и установка Astra Linux</li>
-  </ul>
-  <span class="cc-meta">1 урок · ~15 мин чтения</span>
+  <div class="cc-head"><span class="cc-icon">💿</span><span class="cc-mod">урок 0.1</span></div>
+  <h3>Развёртывание и установка Astra Linux</h3>
+  <p>Как поставить систему на компьютеры кабинета: с флешки, по сети и что делать после установки.</p>
+  <span class="cc-meta">~15 мин чтения<span class="cc-bar"><i style="width:80%"></i></span></span>
 </a>
+
+</div>
+
+### 📘 Модуль 1 · Основы работы
+
+С этого модуля стоит начать каждому: он снимает главный страх — «я ничего не найду и всё сломаю».
+
+<div class="course-cards">
 
 <a class="course-card" href="/lessons/windows-switch">
-  <div class="cc-head"><span class="cc-icon">📘</span><span class="cc-mod">Модуль 1 · основы</span></div>
-  <h3>Основы работы</h3>
-  <p>Уверенный старт: интерфейс, файлы, вход в систему и браузер — без страха «что-то сломать».</p>
-  <ul class="cc-list">
-    <li>Переезд с Windows: что изменилось</li>
-    <li>Интерфейс Fly и рабочий стол</li>
-    <li>Файлы, папки и флешки</li>
-    <li>Учётные записи и вход в систему</li>
-    <li>Интернет и браузер</li>
-  </ul>
-  <span class="cc-meta">5 уроков · по 3–5 мин каждый</span>
+  <div class="cc-head"><span class="cc-icon">🔄</span><span class="cc-mod">урок 1.0</span></div>
+  <h3>Переезд с Windows</h3>
+  <p>Где кнопка «Пуск», чем Fly похожа на Windows и что изменилось на самом деле.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
 </a>
+
+<a class="course-card" href="/lessons/intro">
+  <div class="cc-head"><span class="cc-icon">🖥️</span><span class="cc-mod">урок 1.1</span></div>
+  <h3>Интерфейс Fly и рабочий стол</h3>
+  <p>Меню, панель задач, окна и ярлыки — ориентируемся на новом рабочем месте.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/files">
+  <div class="cc-head"><span class="cc-icon">📁</span><span class="cc-mod">урок 1.2</span></div>
+  <h3>Файлы, папки и флешки</h3>
+  <p>Где лежат документы, как правильно вставлять и извлекать USB-накопители.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:30%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/accounts">
+  <div class="cc-head"><span class="cc-icon">👤</span><span class="cc-mod">урок 1.3</span></div>
+  <h3>Учётные записи и вход в систему</h3>
+  <p>Свой пароль, детский профиль и что делать, если вход не получается.</p>
+  <span class="cc-meta">4 мин<span class="cc-bar"><i style="width:25%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/internet">
+  <div class="cc-head"><span class="cc-icon">🌐</span><span class="cc-mod">урок 1.4</span></div>
+  <h3>Интернет и браузер</h3>
+  <p>Wi-Fi, закладки, обновления браузера и школьные сайты без сюрпризов.</p>
+  <span class="cc-meta">4 мин<span class="cc-bar"><i style="width:25%"></i></span></span>
+</a>
+
+</div>
+
+### 📙 Модуль 2 · Документы и офис
+
+Рабочие файлы в привычных форматах .docx, .xlsx и .pptx — чтобы их открыли на любом компьютере.
+
+<div class="course-cards">
 
 <a class="course-card" href="/lessons/office">
-  <div class="cc-head"><span class="cc-icon">📙</span><span class="cc-mod">Модуль 2 · документы</span></div>
-  <h3>Документы и офис</h3>
-  <p>Writer, Calc и Impress: рабочие файлы в привычных форматах .docx, .xlsx и .pptx.</p>
-  <ul class="cc-list">
-    <li>Замена Word, Excel и PowerPoint</li>
-    <li>Таблицы Calc и диаграммы</li>
-    <li>Impress: презентации классу</li>
-  </ul>
-  <span class="cc-meta">3 урока · по 5–7 мин каждый</span>
+  <div class="cc-head"><span class="cc-icon">📝</span><span class="cc-mod">урок 2.1</span></div>
+  <h3>Writer: замена Word</h3>
+  <p>Документы, шрифты, сохранение в .docx и печать раздаточных материалов.</p>
+  <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
 </a>
+
+<a class="course-card" href="/lessons/calc">
+  <div class="cc-head"><span class="cc-icon">📊</span><span class="cc-mod">урок 2.2</span></div>
+  <h3>Calc: таблицы и диаграммы</h3>
+  <p>Журнал с оценками, средний балл, формулы и диаграмма успеваемости класса.</p>
+  <span class="cc-meta">7 мин<span class="cc-bar"><i style="width:50%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/impress">
+  <div class="cc-head"><span class="cc-icon">🎞️</span><span class="cc-mod">урок 2.3</span></div>
+  <h3>Impress: презентации классу</h3>
+  <p>Слайды показу, заметки докладчика и экспорт в .pptx для чужих ПК.</p>
+  <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
+</a>
+
+</div>
+
+### 🖨️ Модуль 3 · Оборудование в классе
+
+Принтер, проектор, звук, камера и сканер — подключаем и чиним сами, без паники за 5 минут до звонка.
+
+<div class="course-cards">
 
 <a class="course-card" href="/lessons/peripherals">
-  <div class="cc-head"><span class="cc-icon">🖨️</span><span class="cc-mod">Модуль 3 · оборудование</span></div>
-  <h3>Оборудование в классе</h3>
-  <p>Принтер, проектор, звук, камера и сканер — подключаем и чиним сами.</p>
-  <ul class="cc-list">
-    <li>Принтеры, проектор и звук</li>
-    <li>Сканирование, камера и микрофон</li>
-  </ul>
-  <span class="cc-meta">2 урока · по 5 мин каждый</span>
+  <div class="cc-head"><span class="cc-icon">🖨️</span><span class="cc-mod">урок 3.1</span></div>
+  <h3>Принтеры, проектор и звук</h3>
+  <p>Пошаговое подключение и разбор типичных казусов: молчит принтер, нет картинки.</p>
+  <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
 </a>
+
+<a class="course-card" href="/lessons/media">
+  <div class="cc-head"><span class="cc-icon">🎤</span><span class="cc-mod">урок 3.2</span></div>
+  <h3>Сканирование, камера и микрофон</h3>
+  <p>Сканер для раздатки, webcam для дистанционного урока и запись звука.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:35%"></i></span></span>
+</a>
+
+</div>
+
+### 🛡️ Модуль 4 · Безопасность и помощь
+
+Чтобы не потерять работы учеников и уметь починить типовые поломки самостоятельно.
+
+<div class="course-cards">
 
 <a class="course-card" href="/lessons/security">
-  <div class="cc-head"><span class="cc-icon">🛡️</span><span class="cc-mod">Модуль 4 · безопасность</span></div>
-  <h3>Безопасность и помощь</h3>
-  <p>Сбои, пароли, терминал и резервные копии — чтобы не потерять работы учеников.</p>
-  <ul class="cc-list">
-    <li>Безопасность и сбои программ</li>
-    <li>Терминал и установка программ</li>
-    <li>Резервные копии и восстановление</li>
-  </ul>
-  <span class="cc-meta">3 урока · по 5 мин каждый</span>
+  <div class="cc-head"><span class="cc-icon">🛡️</span><span class="cc-mod">урок 4.1</span></div>
+  <h3>Безопасность и сбои программ</h3>
+  <p>Пароли, фишинг, зависшие окна и аккуратная перезагрузка без потери файлов.</p>
+  <span class="cc-meta">6 мин<span class="cc-bar"><i style="width:40%"></i></span></span>
 </a>
 
+<a class="course-card" href="/lessons/terminal">
+  <div class="cc-head"><span class="cc-icon">⌨️</span><span class="cc-mod">урок 4.2</span></div>
+  <h3>Терминал и установка программ</h3>
+  <p>Несколько команд первой необходимости и магазин приложений вместо .exe.</p>
+  <span class="cc-meta">7 мин<span class="cc-bar"><i style="width:50%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/backup">
+  <div class="cc-head"><span class="cc-icon">💾</span><span class="cc-mod">урок 4.3</span></div>
+  <h3>Резервные копии и восстановление</h3>
+  <p>Копия журнала на флешку, возврат удалённого файла и план на случай поломки ПК.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:35%"></i></span></span>
+</a>
+
+</div>
+
+### 📄 Шпаргалки, FAQ и словари
+
+Быстрые ответы, когда времени нет: открывайте по необходимости, печатайте и держите на столе.
+
+<div class="course-cards">
+
 <a class="course-card" href="/lessons/shortcuts">
-  <div class="cc-head"><span class="cc-icon">📄</span><span class="cc-mod">шпаргалки и справочники</span></div>
-  <h3>Шпаргалки, FAQ и словари</h3>
-  <p>Быстрые ответы, когда времени нет: горячие клавиши, частые вопросы, термины, планы уроков.</p>
-  <ul class="cc-list">
-    <li>Шпаргалки и горячие клавиши</li>
-    <li>Частые вопросы (FAQ)</li>
-    <li>Словарь терминов</li>
-    <li>Чек-листы для печати</li>
-    <li>Планы уроков 40/90 минут</li>
-  </ul>
-  <span class="cc-meta">5 материалов · открывайте по необходимости</span>
+  <div class="cc-head"><span class="cc-icon">⌨️</span><span class="cc-mod">шпаргалка</span></div>
+  <h3>Горячие клавиши и памятки</h3>
+  <p>Клавиши учителя, чек-лист флешки и экстренная таблица «что делать сейчас».</p>
+  <span class="cc-meta">3 мин · Ctrl+P<span class="cc-bar"><i style="width:20%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/faq">
+  <div class="cc-head"><span class="cc-icon">❓</span><span class="cc-mod">справочник</span></div>
+  <h3>Частые вопросы (FAQ)</h3>
+  <p>Реальные вопросы коллег: флешки, электронные журналы, ЭЦП и «куда делись файлы».</p>
+  <span class="cc-meta">4 мин<span class="cc-bar"><i style="width:25%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/glossary">
+  <div class="cc-head"><span class="cc-icon">📖</span><span class="cc-mod">словарь</span></div>
+  <h3>Словарь терминов</h3>
+  <p>Перевод с «компьютерного» на человеческий: около сорока понятий простыми словами.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:35%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/checklists">
+  <div class="cc-head"><span class="cc-icon">✅</span><span class="cc-mod">для печати</span></div>
+  <h3>Чек-листы кабинета</h3>
+  <p>Утренний осмотр, начало и конец урока, аварийная таблица и генуборка ПК.</p>
+  <span class="cc-meta">3 мин · Ctrl+P<span class="cc-bar"><i style="width:20%"></i></span></span>
+</a>
+
+<a class="course-card" href="/lessons/lesson-plan">
+  <div class="cc-head"><span class="cc-icon">🕐</span><span class="cc-mod">сценарии</span></div>
+  <h3>Планы уроков 40/90 минут</h3>
+  <p>Готовые тайминги, цели и действия учителя — подставьте свой предмет и проводите.</p>
+  <span class="cc-meta">5 мин<span class="cc-bar"><i style="width:35%"></i></span></span>
 </a>
 
 </div>
 
 ::: tip Как проходить курс
-Не обязательно читать всё подряд. Начните с модуля 1, а шпаргалки держите под рукой — они спасают на перемене за 5 минут до звонка.
+Не обязательно читать всё подряд. Начните с модуля 1, а шпаргалки держите под рукой — они спасают на перемене за 5 минут до звонка. Прошли урок — прокрутите страницу до конца: полоска прогресса вверху позеленеет ✅
 :::
-
-## ✨ Как пользоваться сайтом
-
-| Приём | Что даёт |
-|---|---|
-| `Ctrl + K` (или лупа вверху) | Поиск по всем урокам сразу |
-| Правая колонка «На этой странице» | Быстрый прыжок к нужному разделу урока |
-| Кнопка ☀️/🌙 | Светлая или тёмная (фиолетовая) тема — выбор запоминается |
-| `Ctrl + P` на любой странице | Печатная версия без меню и лишнего — идеально для шпаргалок |
-| «✏️ Предложить правку» внизу урока | Сообщить об ошибке или добавить совет прямо на GitHub |
-| Стрелки внизу урока | Последовательный переход «предыдущий → следующий урок» |
 
 ::: tip Совет на каждый день
 Проходите по одному короткому уроку в день и сразу повторяйте действие на своём компьютере. Через две недели Astra Linux станет для вас «обычным компьютером», а не «страшной заменой Windows».

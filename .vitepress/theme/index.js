@@ -19,6 +19,7 @@ function setupReadingProgress() {
   if (typeof document === 'undefined') return
   let raf = 0
   let running = false
+  let tipTimer = null
 
   const update = () => {
     raf = 0
@@ -28,6 +29,11 @@ function setupReadingProgress() {
       bar = document.createElement('div')
       bar.className = 'read-progress'
       bar.setAttribute('aria-hidden', 'true')
+      // «пузырёк»-подсказка: появляется, когда урок дочитан до конца
+      const tip = document.createElement('span')
+      tip.className = 'rp-tip'
+      tip.textContent = '✅ Урок дочитан — так держать!'
+      bar.appendChild(tip)
       document.body.appendChild(bar)
     }
     const total = doc.scrollHeight - doc.clientHeight
@@ -37,8 +43,15 @@ function setupReadingProgress() {
     const pct = Math.min(100, Math.max(0, scrolled * 100))
     bar.style.width = isDocPage ? `${pct}%` : '0%'
     bar.style.opacity = isDocPage && scrolled > 0.01 ? '1' : '0'
-    // Урок дочитан до конца — полоса «зеленеет» (класс done в CSS)
-    bar.classList.toggle('done', isDocPage && pct >= 99.5)
+    // Урок дочитан до конца — полоса «зеленеет» + показываем подсказку
+    const done = isDocPage && pct >= 99.5
+    bar.classList.toggle('done', done)
+    const tipEl = bar.querySelector('.rp-tip')
+    if (tipEl) {
+      tipEl.classList.toggle('show', done)
+      clearTimeout(tipTimer)
+      if (done) tipTimer = setTimeout(() => tipEl.classList.remove('show'), 3200)
+    }
   }
 
   const onScroll = () => {
@@ -58,6 +71,7 @@ function setupReadingProgress() {
   setupReadingProgress._cleanup = () => {
     window.removeEventListener('scroll', onScroll)
     if (raf) cancelAnimationFrame(raf)
+    clearTimeout(tipTimer)
   }
 }
 
