@@ -34,8 +34,11 @@ function setupReadingProgress() {
     const scrolled = total > 0 ? (doc.scrollTop || document.body.scrollTop) / total : 0
     // Полоса видна только на страницах с содержимым урока
     const isDocPage = !!document.querySelector('.VPDoc')
-    bar.style.width = isDocPage ? `${Math.min(100, Math.max(0, scrolled * 100))}%` : '0%'
+    const pct = Math.min(100, Math.max(0, scrolled * 100))
+    bar.style.width = isDocPage ? `${pct}%` : '0%'
     bar.style.opacity = isDocPage && scrolled > 0.01 ? '1' : '0'
+    // Урок дочитан до конца — полоса «зеленеет» (класс done в CSS)
+    bar.classList.toggle('done', isDocPage && pct >= 99.5)
   }
 
   const onScroll = () => {

@@ -44,6 +44,9 @@
   --ag-shadow-md: 0 4px 12px rgba(23, 34, 46, 0.08), 0 12px 32px rgba(23, 34, 46, 0.08);
   --ag-hero-from: #eaf2fb;
   --ag-hero-to: #fdfdfe;
+  --ag-accent-2: #2f9de4; /* второй «светлый» акцент палитры (для градиентов) */
+  --ag-scrollbar: #c3cfdd; /* ползунок скроллбара */
+  --ag-scrollbar-hover: #9db1c9;
   --ag-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
@@ -75,6 +78,9 @@
   --ag-hero-to: #171226;
   --ag-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.25);
   --ag-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.35);
+  --ag-accent-2: #8f5cf7; /* второй акцент тёмной темы — насыщенный фиолетовый */
+  --ag-scrollbar: #4b3a70;
+  --ag-scrollbar-hover: #6a529c;
 }
 
 /* --------------------------------------------------------------------------
@@ -116,6 +122,47 @@ input:focus-visible {
    именно постоянные анимации смен класса «вешали» интерфейс на слабых ПК */
 
 /* --------------------------------------------------------------------------
+   3.5. ПРОКРУТКА (скроллбар) — тонкий, скруглённый, в цвете темы
+   Firefox: scrollbar-color; Chrome/Edge/Safari (WebKit): псевдоэлементы.
+   Эффекты только цветовые — без blur/теней, чтобы не грузить слабые ПК.
+   -------------------------------------------------------------------------- */
+html {
+  scrollbar-color: var(--ag-scrollbar) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ag-scrollbar);
+  border-radius: 999px;
+  /* «воздух» вокруг ползунка за счёт прозрачной рамки */
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ag-scrollbar-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--vp-c-brand-1);
+}
+
+/* Боковое меню и содержимое тоже получают аккуратный тонкий скролл */
+.VPSidebar::-webkit-scrollbar,
+.VPMenu::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* --------------------------------------------------------------------------
    4. НАВИГАЦИЯ И САЙДБАР
    -------------------------------------------------------------------------- */
 /* Без backdrop-filter/blur — на слабых видеокартах в школьных кабинетах
@@ -136,16 +183,172 @@ input:focus-visible {
   padding-left: 6px;
 }
 
-/* Прогресс чтения вверху страницы */
+/* Прогресс чтения вверху страницы — «прохождение урока» */
 .read-progress {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
+  height: 4px;
   width: 0;
   z-index: 100;
-  /* простой сплошной цвет вместо градиента — дешевле для отрисовки */
-  background: var(--vp-c-brand-1);
+  /* палитра сайта: brand → accent (в тёмной теме — лаванда → фиолетовый) */
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--ag-accent-2));
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 0 10px var(--vp-c-brand-soft);
+  transition: width 0.1s linear, opacity 0.35s ease;
+}
+
+/* «Светящаяся головка» полосы — видно, что прогресс идёт */
+.read-progress::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ag-accent-2);
+  box-shadow: 0 0 8px var(--vp-c-brand-soft);
+}
+
+/* Полоса завершена — становится «зелёной»: урок дочитан */
+.read-progress.done {
+  background: linear-gradient(90deg, var(--vp-c-success-3), #66bb6a);
+}
+.read-progress.done::after {
+  background: #66bb6a;
+}
+
+/* --------------------------------------------------------------------------
+   4.5 ССЫЛКИ, НАВЕДЕНИЕ И НАЖАТИЕ — тактильный отклик интерфейса
+   Все эффекты дешёвые: цвет, underline, scale на 1 кадр. Никаких blur и
+   длинных анимаций — интерфейс не «зависает» даже на школьных нетбуках.
+   -------------------------------------------------------------------------- */
+
+/* Текст в уроках: подчёркивание «прорастает» слева направо при наведении */
+.vp-doc a {
+  text-decoration: none;
+  background-image: linear-gradient(90deg, var(--vp-c-brand-1), var(--ag-accent-2));
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  background-position: left 85%;
+  transition: color 0.15s ease, background-size 0.22s ease;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-1);
+  background-size: 100% 1.5px;
+}
+
+/* Момент нажатия: ссылка чуть «утапливается» + меняет оттенок */
+.vp-doc a:active,
+a:active {
+  color: var(--ag-accent-2);
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Кнопки hero: «толкаем» пальцем — лёгкое вдавливание и смена фона */
+.VPHero .actions a {
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.12s ease, filter 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.VPHero .actions a:hover {
+  filter: brightness(1.06);
+}
+
+.VPHero .actions a.brand:hover {
+  box-shadow: 0 4px 14px var(--vp-c-brand-soft);
+}
+
+.VPHero .actions a:active {
+  transform: translateY(2px) scale(0.97);
+  filter: brightness(0.94);
+  box-shadow: none;
+}
+
+/* Карточки features на главной: мягкий отклик без «прыжков» */
+.VPFeature {
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-1) !important;
+  background: var(--vp-c-bg-soft) !important;
+}
+
+.VPFeature:active {
+  transform: scale(0.99);
+}
+
+/* Пункты навигации сверху */
+.VPNavBarMenuLink {
+  transition: color 0.15s ease;
+}
+
+.VPNavBarMenuLink:active {
+  color: var(--ag-accent-2);
+}
+
+/* Пункты бокового меню: подсветка строки при наведении, «пилюля» при активном */
+.VPSidebarItem .link {
+  transition: color 0.15s ease, background-color 0.15s ease;
+  border-radius: 8px;
+}
+
+.VPSidebarItem .link:hover {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-bg-soft);
+}
+
+.VPSidebarItem .link:active {
+  background-color: var(--vp-c-brand-soft);
+}
+
+.VPSidebar .link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+  background-color: var(--vp-c-brand-soft);
+}
+
+/* Ссылки футера урока (предыдущий/следующий) — карточки с откликом */
+.VPDocFooter .pager-link {
+  border-radius: var(--ag-radius);
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.VPDocFooter .pager-link:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.VPDocFooter .pager-link:active {
+  background-color: var(--vp-c-brand-soft);
+  transform: translateY(1px);
+}
+
+/* Оглавление справа («На этой странице») */
+.VPTocLink {
+  transition: color 0.15s ease;
+}
+
+.VPTocLink:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPTocLink.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* Внешние ссылки в уроках — небольшая стрелка «уходим из курса» */
+.vp-doc a[href^='http://']:not(.no-ext):not(a[href*='github.com/konorchik']):not(.course-card)::after,
+.vp-doc a[href^='https://']:not(.no-ext):not(a[href*='github.com/konorchik']):not(.course-card)::after {
+  content: ' ↗';
+  font-size: 0.8em;
+  color: var(--vp-c-text-3);
 }
 
 /* --------------------------------------------------------------------------
@@ -174,14 +377,10 @@ input:focus-visible {
   height: 4px;
   border-radius: 2px;
   margin-bottom: 14px;
-  background: linear-gradient(90deg, var(--vp-c-brand-1), #2f9de4);
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--ag-accent-2));
 }
 
-.vp-doc a {
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
-}
+/* старые правила ссылок заменены секцией 4.5 (прорастающее подчёркивание) */
 
 .vp-doc table {
   display: table;
@@ -334,48 +533,153 @@ input:focus-visible {
   color: var(--vp-c-text-2);
 }
 
-/* Список «Программа курса» превращаем в карточки-ссылки */
-.course-list {
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 0;
+/* --------------------------------------------------------------------------
+   6.5 ПРОГРАММА КУРСА — карточки модулей (главная страница)
+   Вся карточка = одна большая кликабельная ссылка на первый урок модуля.
+   -------------------------------------------------------------------------- */
+.course-cards {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 24px 0 8px;
+}
+
+a.course-card {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+  padding: 20px 22px;
+  border: 1px solid var(--vp-c-border);
+  border-radius: var(--ag-radius);
+  background: var(--vp-c-bg-elv);
+  box-shadow: var(--ag-shadow-sm);
+  text-decoration: none !important;
+  color: var(--vp-c-text-1);
+  position: relative;
+  overflow: hidden;
+  /* дешёвые свойства для анимации: цвет/рамка/тень + scale на :active */
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
 }
 
-.course-list li {
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
+/* верхняя акцентная полоса модуля — фирменный градиент палитры */
+a.course-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--ag-accent-2));
+  opacity: 0.55;
+  transition: opacity 0.18s ease;
 }
 
-.course-list a {
+a.course-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: var(--ag-shadow-md);
+  color: var(--vp-c-text-1);
+}
+
+a.course-card:hover::before {
+  opacity: 1;
+}
+
+a.course-card:active {
+  transform: translateY(2px) scale(0.99);
+  box-shadow: var(--ag-shadow-sm);
+}
+
+.course-card .cc-head {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 12px;
-  background: var(--vp-c-bg-elv);
-  box-shadow: var(--ag-shadow-sm);
-  text-decoration: none;
-  color: var(--vp-c-text-1);
-  font-weight: 500;
 }
 
-.course-list a:hover {
-  border-color: var(--vp-c-brand-1);
+.course-card .cc-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.course-card .cc-mod {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.course-card h3 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
+}
+
+.course-card h3::after {
+  content: ' →';
+  color: var(--vp-c-text-3);
+  transition: color 0.15s ease;
+}
+
+.course-card:hover h3::after {
   color: var(--vp-c-brand-1);
 }
 
-.course-list a::after {
-  content: '→';
-  margin-left: auto;
+.course-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+}
+
+.course-card .cc-list {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.course-card .cc-list li {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--vp-c-text-2);
+  padding-left: 18px;
+  position: relative;
+  margin: 0;
+}
+
+.course-card .cc-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 2px solid var(--vp-c-brand-1);
+  background: transparent;
+}
+
+.course-card .cc-meta {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed var(--vp-c-border);
+  font-size: 12.5px;
   color: var(--vp-c-text-3);
 }
 
-.course-list a:hover::after {
-  color: var(--vp-c-brand-1);
+@media (max-width: 640px) {
+  .course-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  a.course-card {
+    padding: 16px 18px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -404,9 +708,13 @@ input:focus-visible {
     font-size: 15px;
   }
 
-  .course-list a {
+  .course-card {
     padding: 10px 12px;
     font-size: 14px;
+  }
+
+  a.course-card h3 {
+    font-size: 17px;
   }
 }
 
@@ -431,6 +739,18 @@ input:focus-visible {
   .VPNav, .VPSidebar, .VPLastUpdated, .edit-link, .VPDocFooter,
   .VPLocalNav, .read-progress, .VPFooter, .page-edit, .VPBackToTop {
     display: none !important;
+  }
+
+  /* карточки программы печатаются как обычный список без рамок-теней */
+  .course-cards {
+    display: block;
+  }
+
+  a.course-card {
+    border: none;
+    box-shadow: none;
+    padding: 6px 0;
+    break-inside: avoid;
   }
 
   .VPContent, .vp-doc {
